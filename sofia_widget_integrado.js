@@ -1027,7 +1027,7 @@ SofiaWidget.init({
    primaryColor: '#667eea',
    position: 'bottom-left',
    welcomeMessage: 'Olá! Tem alguma dúvida?',
-   avatarUrl: 'path/to/sofia.png'
+   avatarUrl: 'https://raw.githubusercontent.com/appestoicismo/sofia-widget/main/Sofia_IA.png'
 });
 
 // USO COM PRESET:
@@ -1054,7 +1054,7 @@ SofiaWidget.init({
    exitIntentEnabled: true,
    mobileOptimized: true,
    analytics: true,
-   avatarUrl: 'https://raw.githubusercontent.com/appestoicismo/sofia-widget/main/Sofia_IA.png',
+   avatarUrl: 'https://raw.githubusercontent.com/appestoicismo/sofia-widget/main/Sofia_IA.png'
 });
 
 */

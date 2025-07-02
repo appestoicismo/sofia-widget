@@ -736,7 +736,7 @@ createHTML() {
         }
     }
 }
- / ADICIONE ESTE MÉTODO ANTES DO simulateSofiaResponse:
+// ADICIONE ESTE MÉTODO ANTES DO simulateSofiaResponse:
 addMessage(message, sender) {
     const messagesContainer = document.getElementById('sofiaChatMessages');
     const messageDiv = document.createElement('div');

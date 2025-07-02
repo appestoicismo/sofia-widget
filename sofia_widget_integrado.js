@@ -15,7 +15,7 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
         secondaryColor: '#764ba2',
         position: 'bottom-right', // bottom-right, bottom-left, top-right, top-left
         welcomeMessage: 'Olá! Sou a Sofia, sua consultora no App. Quer me contar o que te trouxe aqui? Assim poderei te direcionar',
-        avatarUrl: 'https://raw.githubusercontent.com/appestoicismo/sofia-widget/main/Sofia_IA.png',
+        avatarUrl: 'https://via.placeholder.com/50x50/667eea/ffffff?text=S',
         showAfterSeconds: 3,
         notificationDelay: 15000,
         exitIntentEnabled: true,

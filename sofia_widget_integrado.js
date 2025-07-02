@@ -735,8 +735,49 @@ createHTML() {
             this.trackEvent('message_sent', { messageLength: message.length });
         }
     }
-}}
-        async simulateSofiaResponse(userMessage) {
+}
+ / ADICIONE ESTE MÉTODO ANTES DO simulateSofiaResponse:
+addMessage(message, sender) {
+    const messagesContainer = document.getElementById('sofiaChatMessages');
+    const messageDiv = document.createElement('div');
+    const contentDiv = document.createElement('div');
+    const timeDiv = document.createElement('div');
+    
+    messageDiv.className = `sofia-message ${sender}`;
+    contentDiv.className = 'sofia-message-content';
+    contentDiv.textContent = message;
+    timeDiv.className = 'sofia-message-time';
+    timeDiv.textContent = this.getCurrentTime();
+    
+    messageDiv.appendChild(contentDiv);
+    messagesContainer.appendChild(messageDiv);
+    messagesContainer.appendChild(timeDiv);
+    
+    // Scroll automático para a última mensagem
+    setTimeout(() => {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }, 100);
+    
+    // Analytics
+    if (this.config.analytics) {
+        this.trackEvent('message_added', { 
+            sender: sender,
+            messageLength: message.length 
+        });
+    }
+    
+    this.messageCount++;
+}
+
+// MÉTODO AUXILIAR PARA HORA:
+getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleTimeString('pt-BR', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+    });
+}       
+    async simulateSofiaResponse(userMessage) {
     this.showTyping();
     try {
         const res = await fetch(API_URL, {

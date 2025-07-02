@@ -563,25 +563,27 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
         // CRIAR ESTRUTURA HTML
         createHTML() {
             const container = document.createElement('div');
-            container.className = 'sofia-widget-container';
+            - container.className = 'sofia-widget-container';
++ container.className = '-widget-container';
+
             container.innerHTML = `
                 <!-- NOTIFICAÇÃO -->
-                <div class="sofia-notification" id="sofiaNotification">
+                - <div class="sofia-notification" id="sofiaNotification">
++ <div class="-notification" id="sofiaNotification">
                     <button class="notification-close" onclick="window.sofiaWidget.hideNotification()">×</button>
                     <strong>👋 Precisa de ajuda?</strong><br>
                     Sou a Sofia e posso te ajudar com desenvolvimento estoico!
                 </div>
 
                 <!-- BUBBLE -->
-                <div class="sofia-bubble" id="sofiaBubble">
-                    <img src="${this.config.avatarUrl}" alt="Sofia" class="sofia-icon" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'width:40px;height:40px;background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:20px;font-weight:bold;\'>S</div>'">
-                </div>
-
+                - <div class="sofia-bubble" id="sofiaBubble">
++ <div class="-bubble" id="sofiaBubble">
                 <!-- CHAT WINDOW -->
                 <div class="sofia-chat-window" id="sofiaChatWindow">
                     <div class="sofia-chat-header">
                         <div style="display: flex; align-items: center;">
-                            <img src="${this.config.avatarUrl}" alt="Sofia" class="sofia-avatar" onerror="this.style.display='none'">
+                            - class="sofia-icon"
++ class="-icon"
                             <div class="sofia-info">
                                 <h3>Sofia</h3>
                                 <p><span class="sofia-online-dot"></span>Consultora Estoica • Online</p>

@@ -1,5 +1,5 @@
 /**
- * Sofia Widget - Assistente Estoica Inteligente
+ * Sofia Widget - Consultora do AppEstoicismo
  * Versão: 2.3 - Integração Modular
  * Para integrar em qualquer página web
  */
@@ -14,7 +14,7 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
         primaryColor: '#667eea',
         secondaryColor: '#764ba2',
         position: 'bottom-right', // bottom-right, bottom-left, top-right, top-left
-        welcomeMessage: 'Olá! Sou a Sofia, sua consultora estoica. Como posso te ajudar hoje?',
+        welcomeMessage: 'Olá! Sou a Sofia, sua consultora no App. Quer me contar o que te trouxe aqui? Assim poderei te direcionar',
         avatarUrl: 'Sofia_IA.png',
         showAfterSeconds: 3,
         notificationDelay: 15000,

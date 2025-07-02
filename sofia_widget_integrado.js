@@ -51,13 +51,13 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
         // INJETAR ESTILOS CSS
         injectStyles() {
             const styles = `
-                /* SOFIA WIDGET STYLES */
-                .sofia-widget-container * {
+                /*  WIDGET STYLES */
+                .-widget-container * {
                     box-sizing: border-box;
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 }
 
-                .sofia-bubble {
+                .-bubble {
                     position: fixed;
                     ${this.getPositionStyles()};
                     width: 70px;
@@ -75,28 +75,28 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                     transform: scale(0.8) translateY(20px);
                 }
 
-                .sofia-bubble.show {
+                .-bubble.show {
                     opacity: 1;
                     transform: scale(1) translateY(0);
-                    animation: sofia-gentle-pulse 3s infinite;
+                    animation: -gentle-pulse 3s infinite;
                 }
 
-                .sofia-bubble:hover {
+                .-bubble:hover {
                     transform: scale(1.1) translateY(-5px);
                     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
                 }
 
-                .sofia-bubble.chat-open {
+                .-bubble.chat-open {
                     transform: scale(0.9);
                     opacity: 0.8;
                 }
 
-                @keyframes sofia-gentle-pulse {
+                @keyframes -gentle-pulse {
                     0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
                     50% { box-shadow: 0 8px 25px ${this.hexToRgba(this.config.primaryColor, 0.4)}; }
                 }
 
-                .sofia-icon {
+                .-icon {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
@@ -104,7 +104,7 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                     border: 2px solid rgba(255,255,255,0.2);
                 }
 
-                .sofia-notification {
+                .-notification {
                     position: fixed;
                     ${this.getNotificationPosition()};
                     background: white;
@@ -122,12 +122,12 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                     border-left: 4px solid ${this.config.primaryColor};
                 }
 
-                .sofia-notification.show {
+                .-notification.show {
                     opacity: 1;
                     transform: translateY(0) scale(1);
                 }
 
-                .sofia-notification::${this.getNotificationArrow()} {
+                .-notification::${this.getNotificationArrow()} {
                     content: '';
                     position: absolute;
                     ${this.getNotificationArrowPosition()};
@@ -151,7 +151,7 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                     height: 20px;
                 }
 
-                .sofia-chat-window {
+                .-chat-window {
                     position: fixed;
                     ${this.getChatPosition()};
                     width: 400px;
@@ -168,13 +168,13 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 }
 
-                .sofia-chat-window.open {
+                .-chat-window.open {
                     display: flex;
                     opacity: 1;
                     transform: translateY(0) scale(1);
                 }
 
-                .sofia-chat-header {
+                .-chat-header {
                     background: linear-gradient(135deg, ${this.config.primaryColor} 0%, ${this.config.secondaryColor} 100%);
                     color: white;
                     padding: 20px;
@@ -184,7 +184,7 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                     border-radius: 20px 20px 0 0;
                 }
 
-                .sofia-avatar {
+                .-avatar {
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
@@ -621,7 +621,7 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                 <div class="sofia-exit-intent-overlay" id="sofiaExitIntentOverlay">
                     <div class="sofia-exit-intent-modal">
                         <h3>✋ Espera aí!</h3>
-                        <p>Antes de sair, que tal conversar com a Sofia? Ela pode esclarecer suas dúvidas sobre o estoicismo em apenas alguns minutos!</p>
+                        <p>Antes de sair, converse comigo? Eu posso esclarecer suas dúvidas sobre o App em apenas alguns minutos!</p>
                         <button class="sofia-exit-button" onclick="window.sofiaWidget.openChatFromExit()">Conversar com Sofia</button>
                         <button class="sofia-exit-button secondary" onclick="window.sofiaWidget.closeExitIntent()">Continuar navegando</button>
                     </div>
@@ -1002,7 +1002,7 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
            estoic: {
                primaryColor: '#667eea',
                secondaryColor: '#764ba2',
-               welcomeMessage: 'Olá! Sou a Sofia, sua consultora estoica. Como posso te ajudar a desenvolver sua mente através da filosofia estoica?',
+               welcomeMessage: 'Olá! Sou a Sofia, sua consultora no App. Eu posso esclarecer como o App pode treinar a sua mente. Vamos conversar?',
                showAfterSeconds: 3,
                exitIntentEnabled: true
            }
@@ -1026,7 +1026,7 @@ SofiaWidget.init();
 SofiaWidget.init({
    primaryColor: '#667eea',
    position: 'bottom-left',
-   welcomeMessage: 'Olá! Como posso ajudar?',
+   welcomeMessage: 'Olá! Tem alguma dúvida?',
    avatarUrl: 'path/to/sofia.png'
 });
 
@@ -1048,13 +1048,13 @@ SofiaWidget.init({
    primaryColor: '#667eea',
    secondaryColor: '#764ba2',
    position: 'bottom-right',
-   welcomeMessage: 'Precisa de ajuda com estoicismo?',
+   welcomeMessage: 'Precisa de ajuda com o AppEstoicismo?',
    showAfterSeconds: 2,
    notificationDelay: 10000,
    exitIntentEnabled: true,
    mobileOptimized: true,
    analytics: true,
-   avatarUrl: 'Sofia_IA.png'
+   avatarUrl: 'https://raw.githubusercontent.com/appestoicismo/sofia-widget/main/Sofia_IA.png',
 });
 
 */

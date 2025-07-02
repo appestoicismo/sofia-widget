@@ -594,9 +594,6 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
             <button class="sofia-close-chat">✕</button>
         </div>
     </div>
-
-                            - class="sofia-icon"
-+ class="-icon"
                             <div class="sofia-info">
                                 <h3>Sofia</h3>
                                 <p><span class="sofia-online-dot"></span>Consultora Estoica • Online</p>

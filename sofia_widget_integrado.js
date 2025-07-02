@@ -472,26 +472,25 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                         font-size: 20px;
                     }
 
-                    .sofia-bubble {
-                        bottom: 20px !important;
-                        right: 20px !important;
-                        width: 65px;
-                        height: 65px;
-                    }
+                    .-bubble {
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 65px;
+    height: 65px;
+}
 
-                    .sofia-icon {
-                        width: 38px;
-                        height: 38px;
-                    }
+.-icon {
+    width: 38px;
+    height: 38px;
+}
 
-                    .sofia-notification {
-                        bottom: 105px !important;
-                        right: 20px !important;
-                        left: 20px !important;
-                        max-width: none;
-                        font-size: 15px;
-                    }
-                }
+.-notification {
+    bottom: 105px !important;
+    right: 20px !important;
+    left: 20px !important;
+    max-width: none;
+    font-size: 15px;
+}
 
                 /* EXIT INTENT */
                 .sofia-exit-intent-overlay {
@@ -561,88 +560,85 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
         }
 
         // CRIAR ESTRUTURA HTML
-        createHTML() {
-            const container = document.createElement('div');
-            - container.className = 'sofia-widget-container';
-+ container.className = '-widget-container';
+createHTML() {
+    const container = document.createElement('div');
+    container.className = '-widget-container';
 
-            container.innerHTML = `
-                <!-- NOTIFICAÇÃO -->
-                - <div class="sofia-notification" id="sofiaNotification">
-+ <div class="-notification" id="sofiaNotification">
-                    <button class="notification-close" onclick="window.sofiaWidget.hideNotification()">×</button>
-                    <strong>👋 Precisa de ajuda?</strong><br>
-                    Sou a Sofia e posso te ajudar com desenvolvimento estoico!
-                </div>
+    container.innerHTML = `
+        <!-- NOTIFICAÇÃO -->
+        <div class="-notification" id="sofiaNotification">
+            <button class="notification-close" onclick="window.sofiaWidget.hideNotification()">×</button>
+            <strong>👋 Precisa de ajuda?</strong><br>
+            Sou a Sofia e posso te ajudar com desenvolvimento estoico!
+        </div>
 
-                <!-- BUBBLE -->
-                - <div class="sofia-bubble" id="sofiaBubble">
-+ <div class="-bubble" id="sofiaBubble">
-                <!-- CHAT WINDOW -->
-                <div class="-chat-window" id="sofiaChatWindow">
-    <div class="-chat-header">
-        <div style="display: flex; align-items: center;">
+        <!-- BUBBLE -->
+        <div class="-bubble" id="sofiaBubble">
             <img 
                 src="${this.config.avatarUrl}" 
                 alt="Sofia" 
-                class="-avatar" 
+                class="-icon" 
                 onerror="this.style.display='none'">
-            <div class="sofia-info">
-                <h3>Sofia</h3>
-                <p><span class="sofia-online-dot"></span>Consultora Estoica • Online</p>
-            </div>
-            <button class="sofia-close-chat">✕</button>
         </div>
-    </div>
-                            <div class="sofia-info">
-                                <h3>Sofia</h3>
-                                <p><span class="sofia-online-dot"></span>Consultora Estoica • Online</p>
-                            </div>
-                        </div>
-                        <button class="sofia-close-chat">✕</button>
-                    </div>
 
-                    <div class="sofia-chat-messages" id="sofiaChatMessages">
-                        <div class="sofia-message sofia">
-                            <div class="sofia-message-content">${this.config.welcomeMessage}</div>
-                        </div>
-                        <div class="sofia-message-time">Agora</div>
-
-                        <div class="sofia-typing-indicator" id="sofiaTypingIndicator">
-                            <div class="sofia-typing-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sofia-chat-input-area">
-                        <input 
-                            type="text" 
-                            class="sofia-chat-input" 
-                            id="sofiaChatInput" 
-                            placeholder="Digite sua mensagem..."
-                        >
-                        <button class="sofia-send-button" id="sofiaSendButton">➤</button>
+        <!-- CHAT WINDOW -->
+        <div class="-chat-window" id="sofiaChatWindow">
+            <div class="-chat-header">
+                <div style="display: flex; align-items: center;">
+                    <img 
+                        src="${this.config.avatarUrl}" 
+                        alt="Sofia" 
+                        class="-avatar" 
+                        onerror="this.style.display='none'">
+                    <div class="sofia-info">
+                        <h3>Sofia</h3>
+                        <p><span class="sofia-online-dot"></span>Consultora Estoica • Online</p>
                     </div>
                 </div>
+                <button class="sofia-close-chat">✕</button>
+            </div>
 
-                <!-- EXIT INTENT -->
-                ${this.config.exitIntentEnabled ? `
-                <div class="sofia-exit-intent-overlay" id="sofiaExitIntentOverlay">
-                    <div class="sofia-exit-intent-modal">
-                        <h3>✋ Espera aí!</h3>
-                        <p>Antes de sair, converse comigo? Eu posso esclarecer suas dúvidas sobre o App em apenas alguns minutos!</p>
-                        <button class="sofia-exit-button" onclick="window.sofiaWidget.openChatFromExit()">Conversar com Sofia</button>
-                        <button class="sofia-exit-button secondary" onclick="window.sofiaWidget.closeExitIntent()">Continuar navegando</button>
+            <div class="sofia-chat-messages" id="sofiaChatMessages">
+                <div class="sofia-message sofia">
+                    <div class="sofia-message-content">${this.config.welcomeMessage}</div>
+                </div>
+                <div class="sofia-message-time">Agora</div>
+
+                <div class="sofia-typing-indicator" id="sofiaTypingIndicator">
+                    <div class="sofia-typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
-                ` : ''}
-            `;
+            </div>
 
-            document.body.appendChild(container);
-        }
+            <div class="sofia-chat-input-area">
+                <input 
+                    type="text" 
+                    class="sofia-chat-input" 
+                    id="sofiaChatInput" 
+                    placeholder="Digite sua mensagem..."
+                >
+                <button class="sofia-send-button" id="sofiaSendButton">➤</button>
+            </div>
+        </div>
+
+        <!-- EXIT INTENT -->
+        ${this.config.exitIntentEnabled ? `
+        <div class="sofia-exit-intent-overlay" id="sofiaExitIntentOverlay">
+            <div class="sofia-exit-intent-modal">
+                <h3>✋ Espera aí!</h3>
+                <p>Antes de sair, converse comigo? Eu posso esclarecer suas dúvidas sobre o App em apenas alguns minutos!</p>
+                <button class="sofia-exit-button" onclick="window.sofiaWidget.openChatFromExit()">Conversar com Sofia</button>
+                <button class="sofia-exit-button secondary" onclick="window.sofiaWidget.closeExitIntent()">Continuar navegando</button>
+            </div>
+        </div>
+        ` : ''}
+    `;
+
+    document.body.appendChild(container);
+}
 
         // VINCULAR EVENTOS
         bindEvents() {
@@ -732,7 +728,14 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
             if (message && !this.isTyping) {
                 this.addMessage(message, 'user');
                 input.value = '';
-                }
+                // ⭐ ADICIONE ESTA LINHA:
+        this.simulateSofiaResponse(message);
+        
+        if (this.config.analytics) {
+            this.trackEvent('message_sent', { messageLength: message.length });
+        }
+    }
+}}
         async simulateSofiaResponse(userMessage) {
     this.showTyping();
     try {

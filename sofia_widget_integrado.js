@@ -579,9 +579,22 @@ const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
                 - <div class="sofia-bubble" id="sofiaBubble">
 + <div class="-bubble" id="sofiaBubble">
                 <!-- CHAT WINDOW -->
-                <div class="sofia-chat-window" id="sofiaChatWindow">
-                    <div class="sofia-chat-header">
-                        <div style="display: flex; align-items: center;">
+                <div class="-chat-window" id="sofiaChatWindow">
+    <div class="-chat-header">
+        <div style="display: flex; align-items: center;">
+            <img 
+                src="${this.config.avatarUrl}" 
+                alt="Sofia" 
+                class="-avatar" 
+                onerror="this.style.display='none'">
+            <div class="sofia-info">
+                <h3>Sofia</h3>
+                <p><span class="sofia-online-dot"></span>Consultora Estoica • Online</p>
+            </div>
+            <button class="sofia-close-chat">✕</button>
+        </div>
+    </div>
+
                             - class="sofia-icon"
 + class="-icon"
                             <div class="sofia-info">

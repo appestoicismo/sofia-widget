@@ -7,8 +7,10 @@
 (function() {
     'use strict';
 
+    // ENDPOINT DA SOFIA (Railway)
+const API_URL = "https://sofia-api-backend-production.up.railway.app/chat";
     // CONFIGURAÇÕES PADRÃO
-    const defaultConfig = {
+        const defaultConfig = {
         primaryColor: '#667eea',
         secondaryColor: '#764ba2',
         position: 'bottom-right', // bottom-right, bottom-left, top-right, top-left
@@ -718,60 +720,28 @@
             if (message && !this.isTyping) {
                 this.addMessage(message, 'user');
                 input.value = '';
-                this.simulateSofiaResponse(message);
-                
-                if (this.config.analytics) {
-                    this.trackEvent('message_sent', { message_count: ++this.messageCount });
                 }
-            }
-        }
-
-        addMessage(content, sender) {
-            const messagesContainer = document.getElementById('sofiaChatMessages');
-            const time = new Date().toLocaleTimeString('pt-BR', { 
-                hour: '2-digit', 
-                minute: '2-digit' 
-            });
-
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `sofia-message ${sender}`;
-            messageDiv.innerHTML = `<div class="sofia-message-content">${content}</div>`;
-
-            const timeDiv = document.createElement('div');
-            timeDiv.className = 'sofia-message-time';
-            timeDiv.textContent = time;
-
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.appendChild(timeDiv);
-            
-            setTimeout(() => {
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }, 100);
-        }
-
-        simulateSofiaResponse(userMessage) {
-            this.showTyping();
-            
-            const baseDelay = 1000;
-            const charDelay = userMessage.length * 50;
-            const totalDelay = baseDelay + charDelay + (Math.random() * 1000);
-            
-            setTimeout(() => {
-                this.hideTyping();
-                
-                const responses = [
-                    "Interessante! Me conte mais sobre isso. Como você tem lidado com essa situação?",
-                    "Entendo sua perspectiva. Na filosofia estoica, aprendemos que podemos controlar nossas reações. Você já experimentou essa abordagem?",
-                    "Que insight profundo! Você já teve contato com desenvolvimento mental antes?",
-                    "Baseado no que você me contou, posso ter algumas sugestões. O AppEstoicismo tem trilhas específicas para sua situação. Quer conversar sobre isso?",
-                    "Você provavelmente já sabe que a transformação começa com pequenos passos. Que tal começarmos sua jornada estoica hoje?"
-                ];
-                
-                const response = responses[Math.floor(Math.random() * responses.length)];
-                this.addMessage(response, 'sofia');
-            }, totalDelay);
-        }
-
+        async simulateSofiaResponse(userMessage) {
+    this.showTyping();
+    try {
+        const res = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ mensagem: userMessage })
+        });
+        const data  = await res.json();
+        const reply = (data.resposta || "Desculpe, algo deu errado.").trim();
+        this.addMessage(reply, "sofia");
+    } catch (err) {
+        console.error(err);
+        this.addMessage(
+            "Ops! Não consegui me conectar. Tente novamente em instantes.",
+            "sofia"
+        );
+    } finally {
+        this.hideTyping();
+    }
+}
         showTyping() {
             this.isTyping = true;
             const indicator = document.getElementById('sofiaTypingIndicator');
